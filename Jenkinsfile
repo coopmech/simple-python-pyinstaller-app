@@ -39,7 +39,6 @@ pipeline {
             }
             post {
                 success {
-                    sh 'sleep 300'
                     archiveArtifacts 'dist/add2vals'
                 }
             }
