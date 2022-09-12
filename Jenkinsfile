@@ -30,12 +30,10 @@ pipeline {
             agent {
                 docker {
                     image 'cdrx/pyinstaller-linux:python2'
-                    args '-i --entrypoint=/usr/local/bin'
                 }
             }
             steps {
                 input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
-                sh '/usr/local/bin/pyinstaller -v'
                 sh '/usr/local/bin/pyinstaller --onefile sources/add2vals.py'
             }
             post {
