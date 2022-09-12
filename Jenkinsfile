@@ -37,7 +37,7 @@ pipeline {
                 input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
                 sh 'python2 --version'
                 sh 'curl https://bootstrap.pypa.io/pip/2.7/get-pip.py --output get-pip.py'
-                sh 'apt install python-pip -y'
+                sh 'apt-get install python-pip -y'
                 sh 'python2 -m pip install PyInstaller==3.6'
                 sh 'pyinstaller --onefile sources/add2vals.py'
             }
