@@ -36,10 +36,10 @@ pipeline {
             steps {
                 input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
                 sh 'pyinstaller --onefile sources/add2vals.py'
-                sh 'sleep 300'
             }
             post {
                 success {
+                    sh 'sleep 300'
                     archiveArtifacts 'dist/add2vals'
                 }
             }
