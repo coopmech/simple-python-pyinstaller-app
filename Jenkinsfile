@@ -30,7 +30,7 @@ pipeline {
             agent {
                 docker {
                     image 'cdrx/pyinstaller-linux:python2'
-                    args '-i --entrypoint /bin/sh'
+                    args '--entrypoint /bin/sh'
                 }
             }
             steps {
