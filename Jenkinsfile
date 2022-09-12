@@ -26,5 +26,22 @@ pipeline {
                 }
             }
         }
+        stage('Deliver') {
+            agent {
+                docker {
+                    image 'cdrx/pyinstaller-linux:python2'
+                }
+            }
+            steps {
+                input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
+                sh 'pyinstaller --onefile sources/add2vals.py'
+                sh 'sleep 300'
+            }
+            post {
+                success {
+                    archiveArtifacts 'dist/add2vals'
+                }
+            }
+        }
     }
 }
