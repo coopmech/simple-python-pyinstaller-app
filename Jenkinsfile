@@ -30,7 +30,7 @@ pipeline {
             agent {
                 docker {
                     image 'cdrx/pyinstaller-linux:python2'
-                    args '-i --volume-from=1a6bb34b4a47e2836dd765a5eb554dcca948f453f799686b92b353a1fa37e0f8'
+                    args '-i --volume-from 1a6bb34b4a47e2836dd765a5eb554dcca948f453f799686b92b353a1fa37e0f8'
                 }
             }
             steps {
