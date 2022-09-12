@@ -35,7 +35,7 @@ pipeline {
             }
             steps {
                 input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
-                sh '/var/lib/jenkins/workspace/submission-cicd-pipeline-DaniPrasetyo/sources:/src cdrx/pyinstaller-linux:python2 pyinstaller --onefile sources/add2vals.py'
+                sh 'docker run --rm -v /var/lib/jenkins/workspace/submission-cicd-pipeline-DaniPrasetyo/sources:/src cdrx/pyinstaller-linux:python2 pyinstaller --onefile -F add2vals.py'
             }
             post {
                 success {
