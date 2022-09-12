@@ -4,7 +4,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'python:latest'
+                    image 'python:2-alpine'
                 }
             }
             steps {
@@ -30,13 +30,13 @@ pipeline {
         stage('Deliver') {
             agent {
                 docker {
-                    image 'cdrx/pyinstaller-linux:latest'
+                    image 'cdrx/pyinstaller-linux:python2'
                     args '-i --entrypoint='
                 }
             }
             steps {
                 input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
-                sh 'pyinstaller --onefile sources/add2vals.py'
+                sh '/var/lib/jenkins/workspace/submission-cicd-pipeline-DaniPrasetyo/sources:/src cdrx/pyinstaller-linux:python2 pyinstaller --onefile sources/add2vals.py'
             }
             post {
                 success {
