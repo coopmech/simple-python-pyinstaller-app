@@ -35,6 +35,8 @@ pipeline {
             }
             steps {
                 input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
+                sh 'python2 --version'
+                sh 'python2 -m pip install PyInstaller==3.6'
                 sh 'pyinstaller --onefile sources/add2vals.py'
             }
             post {
