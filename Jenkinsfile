@@ -35,7 +35,7 @@ pipeline {
             }
             steps {
                 input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
-                sh '/usr/local/bin/pyinstaller --onefile /home/dani_rnd2021/simple-python-pyinstaller-app/sources/add2vals.py'
+                sh '/usr/local/bin/pyinstaller --onefile /var/lib/jenkins/workspace/submission-cicd-pipeline-DaniPrasetyo/sources/add2vals.py'
             }
             post {
                 success {
