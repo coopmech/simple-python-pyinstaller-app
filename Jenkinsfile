@@ -35,7 +35,7 @@ pipeline {
             }
             steps {
                 input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
-                sh 'pyinstaller --onefile sources/add2vals.py'
+                sh '/usr/local/bin/pyinstaller --onefile sources/add2vals.py'
             }
             post {
                 success {
