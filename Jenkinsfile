@@ -38,6 +38,7 @@ pipeline {
             }
             steps {
                 dir(path: env.BUILD_ID) { 
+                    input message: 'Lanjutkan ke tahap Deploy? (Click "Proceed" to continue)'
                     unstash(name: 'compiled-results') 
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'pyinstaller -F add2vals.py'" 
                 }
@@ -45,6 +46,7 @@ pipeline {
             post {
                 success {
                     archiveArtifacts "${env.BUILD_ID}/sources/dist/add2vals" 
+                    sh 'sleep 60'
                     sh "docker run --rm -v ${VOLUME} ${IMAGE} 'rm -rf build dist'"
                 }
             }
